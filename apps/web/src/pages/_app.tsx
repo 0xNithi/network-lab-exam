@@ -1,3 +1,5 @@
+import LogRocket from "logrocket"
+import setupLogRocketReact from "logrocket-react"
 import { Auth } from "@supabase/ui"
 import { ThemeProvider } from "next-themes"
 import type { AppProps } from "next/app"
@@ -9,8 +11,20 @@ import { supabase } from "../utils/supabase"
 
 const MyApp = ({ Component, pageProps }: AppProps) => {
   useEffect(() => {
+    LogRocket.init("networklab/exam")
+    setupLogRocketReact(LogRocket)
+
     const { data: authListener } = supabase.auth.onAuthStateChange(
       async (event, session) => {
+        if (session?.user?.email) {
+          LogRocket.identify(session?.user?.email, {
+            id: session?.user.id,
+            phone: session?.user?.phone ?? "",
+            user_metadata: session?.user?.user_metadata.avatar_url,
+            email: session?.user.email,
+          })
+        }
+
         await fetch("/api/auth", {
           method: "POST",
           headers: new Headers({ "Content-Type": "application/json" }),
