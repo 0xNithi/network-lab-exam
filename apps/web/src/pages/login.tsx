@@ -1,6 +1,5 @@
-import { GetServerSideProps, NextPage } from "next"
+import { NextPage } from "next"
 
-import { supabase } from "../utils/supabase"
 import LoginLayout from "../views/Login"
 import LoginForm from "../views/Login/LoginForm"
 
