@@ -23,11 +23,14 @@ const HomePage: NextPage<HomePageProps> = (props) => {
 }
 
 export const getServerSideProps: GetServerSideProps = async ({ req }) => {
-  const { user, error } = await supabase.auth.api.getUserByCookie(req)
+  try {
+    const { user } = await supabase.auth.api.getUserByCookie(req)
 
-  console.log(error)
-
-  if (!user) {
+    if (!user) {
+      return { props: {}, redirect: { destination: "/login" } }
+    }
+  } catch (error) {
+    console.log(error)
     return { props: {}, redirect: { destination: "/login" } }
   }
 
