@@ -23,11 +23,11 @@ const HomePage: NextPage<HomePageProps> = (props) => {
 }
 
 export const getServerSideProps: GetServerSideProps = async ({ req }) => {
-  const { user } = await supabase.auth.api.getUserByCookie(req)
+  // const { user } = await supabase.auth.api.getUserByCookie(req)
 
-  if (!user) {
-    return { props: {}, redirect: { destination: "/login" } }
-  }
+  // if (!user) {
+  //   return { props: {}, redirect: { destination: "/login" } }
+  // }
 
   const submission = await fetch(`http://localhost:3000/api/submission`, {
     headers: req!.headers as HeadersInit,
