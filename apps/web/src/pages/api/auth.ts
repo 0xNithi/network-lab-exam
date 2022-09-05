@@ -9,11 +9,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     event === "SIGNED_OUT"
   ) {
     supabase.auth.api.setAuthCookie(req, res)
-    res.status(200).json({ status: "success" })
   }
-  res
-    .status(403)
-    .json({ status: "error", message: "please login with @kmitl.ac.th" })
 }
 
 export default handler
