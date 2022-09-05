@@ -33,19 +33,13 @@ export const getServerSideProps: GetServerSideProps = async ({ req }) => {
     return { props: {}, redirect: { destination: "/login" } }
   }
 
-  const submission = await fetch(
-    `https://network-lab-exam.vercel.app/api/submission`,
-    {
-      headers: req!.headers as HeadersInit,
-    }
-  ).then((res) => (res.status == 200 ? true : false))
+  const submission = await fetch(`http://localhost:3000/api/submission`, {
+    headers: req!.headers as HeadersInit,
+  }).then((res) => (res.status == 200 ? true : false))
 
-  const started_at = await fetch(
-    `https://network-lab-exam.vercel.app/api/logs`,
-    {
-      headers: req!.headers as HeadersInit,
-    }
-  ).then((res) => (res.status == 200 ? true : false))
+  const started_at = await fetch(`http://localhost:3000/api/logs`, {
+    headers: req!.headers as HeadersInit,
+  }).then((res) => (res.status == 200 ? true : false))
 
   return {
     props: {

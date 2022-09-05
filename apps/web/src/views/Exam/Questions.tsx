@@ -32,7 +32,7 @@ const Questions: FC<any> = (props) => {
 
   const submitHandler = useCallback(() => {
     let question = [...questions]
-    fetch("https://network-lab-exam.vercel.app/api/submission", {
+    fetch("http://localhost:3000/api/submission", {
       method: "post",
       body: JSON.stringify({
         answer: JSON.stringify(

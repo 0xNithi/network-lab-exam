@@ -10,7 +10,7 @@ const LoginForm: FC = () => {
       {
         provider: "google",
       },
-      { redirectTo: "https://network-lab-exam.vercel.app/login" }
+      { redirectTo: "http://localhost:3000/login" }
     )
   }, [])
 
