@@ -43,13 +43,15 @@ export const Navbar: FC = () => {
     return (
       <div className="flex flex-col bg-white divide-y rounded shadow divide-slate-300 dark:divide-slate-600 dark:bg-slate-800">
         <div className="flex flex-row items-center p-2 space-x-4">
-          <Image
-            src={`https://res.cloudinary.com/demo/image/fetch/${user?.user_metadata.avatar_url}`}
-            alt={user?.user_metadata.full_name}
-            width={32}
-            height={32}
-            className="rounded-full"
-          />
+          {user?.user_metadata.avatar_url && (
+            <Image
+              src={`https://res.cloudinary.com/demo/image/fetch/${user?.user_metadata.avatar_url}`}
+              alt={user?.user_metadata.full_name}
+              width={32}
+              height={32}
+              className="rounded-full"
+            />
+          )}
           <div>
             <p>{user?.user_metadata.full_name}</p>
             <p>{user?.email}</p>
@@ -90,13 +92,15 @@ export const Navbar: FC = () => {
         >
           <div>
             <Button className="p-1" onClick={handleToggleMenu}>
-              <Image
-                src={`https://res.cloudinary.com/demo/image/fetch/${user?.user_metadata.avatar_url}`}
-                alt={user?.user_metadata.full_name}
-                width={32}
-                height={32}
-                className="rounded-full"
-              />
+              {user?.user_metadata.avatar_url && (
+                <Image
+                  src={`https://res.cloudinary.com/demo/image/fetch/${user?.user_metadata.avatar_url}`}
+                  alt={user?.user_metadata.full_name}
+                  width={32}
+                  height={32}
+                  className="rounded-full"
+                />
+              )}
             </Button>
           </div>
         </Popover>
