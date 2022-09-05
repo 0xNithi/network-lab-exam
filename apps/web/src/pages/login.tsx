@@ -12,14 +12,4 @@ const LoginPage: NextPage = () => {
   )
 }
 
-export const getServerSideProps: GetServerSideProps = async ({ req }) => {
-  const { user } = await supabase.auth.api.getUserByCookie(req)
-
-  if (user && user.email?.endsWith("@kmitl.ac.th")) {
-    return { props: {}, redirect: { destination: "/" } }
-  }
-
-  return { props: {} }
-}
-
 export default LoginPage
