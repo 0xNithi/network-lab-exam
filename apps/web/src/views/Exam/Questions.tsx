@@ -32,7 +32,7 @@ const Questions: FC<any> = (props) => {
 
   const submitHandler = useCallback(() => {
     let question = [...questions]
-    fetch("http://localhost:3000/api/submission", {
+    fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/submission`, {
       method: "post",
       body: JSON.stringify({
         answer: JSON.stringify(

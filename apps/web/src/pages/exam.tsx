@@ -33,27 +33,33 @@ export const getServerSideProps: GetServerSideProps = async ({ req }) => {
     return { props: {}, redirect: { destination: "/login" } }
   }
 
-  const submission = await fetch(`http://localhost:3000/api/submission`, {
-    headers: req!.headers as HeadersInit,
-  }).then((res) => (res.status == 200 ? res.json() : null))
+  const submission = await fetch(
+    `${process.env.NEXT_PUBLIC_BASE_URL}/api/submission`,
+    {
+      headers: req!.headers as HeadersInit,
+    }
+  ).then((res) => (res.status == 200 ? res.json() : null))
 
   if (submission !== null) {
     return { props: {}, redirect: { destination: "/" } }
   }
 
-  const { started_at } = await fetch(`http://localhost:3000/api/logs`, {
-    headers: req!.headers as HeadersInit,
-  }).then(async (res) =>
+  const { started_at } = await fetch(
+    `${process.env.NEXT_PUBLIC_BASE_URL}/api/logs`,
+    {
+      headers: req!.headers as HeadersInit,
+    }
+  ).then(async (res) =>
     res.status == 200
       ? res.json()
-      : await fetch(`http://localhost:3000/api/logs`, {
+      : await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/logs`, {
           method: "POST",
           headers: req!.headers as HeadersInit,
         }).then((res) => res.json())
   )
 
   const questions = await (
-    await fetch(`http://localhost:3000/api/questions`, {
+    await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/questions`, {
       headers: req!.headers as HeadersInit,
     })
   ).json()

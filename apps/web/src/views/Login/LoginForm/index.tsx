@@ -10,7 +10,7 @@ const LoginForm: FC = () => {
       {
         provider: "google",
       },
-      { redirectTo: "http://localhost:3000/login" }
+      { redirectTo: `${process.env.NEXT_PUBLIC_BASE_URL}/login` }
     )
   }, [])
 
