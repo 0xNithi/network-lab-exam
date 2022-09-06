@@ -12,9 +12,9 @@ export const NetworkLabIcon: FC<NetworkLabIconProps> = ({ className }) => {
         className ? ` ${className}` : ""
       }`}
     >
-      <div className="inline-flex text-2xl italic font-bold">
+      <div className="text-2xl italic font-bold">
         Netw
-        <WifiIcon className="w-8 ml-1 fill-current" />
+        <WifiIcon className="inline-block w-8 ml-1 fill-current " />
         rk
       </div>
       <div className="text-xs font-bold">Laboratory</div>
